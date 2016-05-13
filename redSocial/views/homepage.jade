@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+html(lang="es")
+head
+  meta(charset="UTF-8")
+  title Sector Eductivo 05
+  link(href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css", rel="stylesheet", integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7", crossorigin="anonymous")
+body
+  h1 Pagina de inicio
+  a(id="user" href="/users/#{user.username}") perfil
+  
+  h3(id="gf") Todas las publicaciones
+  div(id="feed")
+    if(statuses[0])
+      div(id="postsOuter")
+        div(id="socket")
+        - for(var i = 0; i<statuses.length; i++) {
+          div(class="post")  
+            div(class="timestamp") 
+              abbr(class="timeago" title="#{new Date(statuses[i].time).toISOString()}")
+            a(class="colorize" href="/users/#{statuses[i].username}")
+              div(class="smallpic")
+                img(class="smallpic_img" src="#{statuses[i].image}")
+              div(class="smallname") 
+                =statuses[i].username
+            div(class="statusbody") 
+              =statuses[i].body
+            
+        - }
+    else
+      div(id="noposts") No hay posts en este momento  
+  

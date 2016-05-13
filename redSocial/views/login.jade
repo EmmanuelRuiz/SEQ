@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+html(lang="en")
+head
+  meta(charset="UTF-8")
+  title Iniciar Sesión - Sector Educativo 05
+  link(href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css", rel="stylesheet", integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7", crossorigin="anonymous")
+body
+  div(class="col-md-5")
+    h1 Iniciar Sesión
+    if(error2)
+      div(class="error")
+      = error2
+    form(action="/login" method="post")
+      div(class="form-group")
+        input(type="text" name="username" class="form-control" placeholder="RFC")
+      div(class="form-group")
+        input(type="password" name="password" class="form-control" placeholder="Contraseña")
+      div(class="form-group text-right")
+        input(type="submit" class="btn btn-success" value="Entrar")
+  

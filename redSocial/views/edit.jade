@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+html(lang="es")
+head
+  meta(charset="UTF-8")
+  title Perfil - Sector Educativo 05
+  link(rel="stylesheet" href="/css/bootstrap.css")
+  link(rel="stylesheet" href="/css/animate.css")
+  link(rel="stylesheet" href="/css/main.css")
+
+body
+  
+  script(src="/js/main.js")
+  nav(class="navbar navbar-default topnav")
+    div(class="container topnav")
+      a(class="navbar-brand " href="/") SEQ
+      div(class="collapse navbar-collapse")
+        ul(class="nav navbar-nav navbar-right")
+          li
+            a(href="/") Inicio
+          li
+            a(href="#about") Perfil
+          li
+            a(href="/logout") Salir
+
+   - var myname = currentUser.username      
+    
+    if(user.username == currentUser.username)
+      - var isMe = true
+    else
+      - var isMe = false
+ 
+  section(class="section-perfil")
+    div(class="contenedor-foto")
+      div(class="container")
+        div(class="row")
+          div(Class="col-sm-5 text-center")
+            div(class="imagen-perfil")
+              img(src="#{user.image}" class="img-profile img-responsive" )
+          div(class="col-sm-7 contenido-perfil")
+            ul(class="row")
+              li(class="col-sm-6")
+                if (isMe) 
+                  h1= user.username
+                  form(action="/profile" method="post")
+                    div(class="form-group")
+                      input(name="image" type="text" class="form-control img-profile" value="#{user.image}")
+                    div(class="form-group")
+                      label Biografia
+                      textarea(name="bio" class="form-control")
+                        = user.bio
+                    div(class="form-group text-right")  
+                    input(type="submit" class="btn btn-success" value="Actualizar") 
+                else
+                  div
+                    =user.bio
+            
+            
+      div(class="col-md-6" )
+        div(id="postsOuter")
+          h1 Publicaciones
+          if(isMe)
+            form(action="/statuses" id="postNewStatus" method="post")
+              div(class="form-group")
+                label Comparte tu idea...
+                textarea(name="status"  id="newstatus" class="form-control")
+              div(class="form-group")
+                input(type="submit" class="btn btn-success sub" value="Publicar")
+            
+        - for (var i = 0; i < statuses.length; ++i) {
+          div(class="post col-md-6")
+            div(class="timestamp")
+              abbr(title="#{new Date(statuses[i].time).toISOString()}")
+            a(href="/users/#{user.username}")
+              div(class="smallpic")
+                img(src="#{user.image}" alt="")
+              div(class="smalname")
+                =user.username
+            div(class="statusbody")
+              =statuses[i].body
+        - }
+                
+              
+          

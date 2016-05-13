@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+html(lang="en")
+head
+  meta(charset="UTF-8")
+  title Registrar - Sector Educativo 05
+  link(href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css", rel="stylesheet", integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7", crossorigin="anonymous")
+body
+  div(class="col-md-5 center-block no-float  text-left")
+    h1 Crear cuenta
+    if(error1)
+      div(class="error")
+      =error1
+    form(action="/signup" method="post")
+      div(class="form-group")
+        input(type="text" name="username" class="form-control" placeholder="Nombre de usuario")
+      div(class="form-group")
+        input(type="password" name="password" class="form-control" placeholder="Contraseña")
+      div(class="form-group")
+        input(type="password" name="confirm" class="form-control" placeholder="Confirmar contraseña")
+      div(class="form-group text-right")
+        button(type="submit" class="btn btn-success" ) Registrar
