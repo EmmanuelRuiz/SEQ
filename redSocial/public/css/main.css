@@ -17,6 +17,10 @@ body{
   float: none!important;
 }
 
+.float-right{
+  float: right;
+}
+
 .index-background-welcome{
   background-image: url("../img/background.jpg");
   background-repeat: no-repeat;
@@ -54,6 +58,7 @@ body{
 a:hover{
   color: grey;
   text-decoration: none;
+  cursor: pointer;
 }
 
 .img-banner{
@@ -63,6 +68,23 @@ a:hover{
 .navbar-default {
     background-color: #fff;
   }
+
+.top-space{
+  margin-top: 50px;
+}
+
+.justify{
+  text-align: justify;
+}
+
+.content{
+  background-color: white;
+  padding: 2%;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+}
+
+
 
 /* profile */
 
@@ -81,6 +103,7 @@ background-color: #fAfAfA;
     overflow: hidden;
     position: relative;
     margin: 0 auto;
+    border-radius: 50%;
 }
 
 .contenedor-foto .contenido-perfil ul {
@@ -101,8 +124,7 @@ nav{
   text-align: center;
   padding-bottom: 55px;
   padding: 70px 0;
-  margin-right: 70px;
-  margin-left: 70px;
+  ;
 }
 
 .img-publicacion{
