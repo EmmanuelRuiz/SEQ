@@ -3,29 +3,55 @@ html(lang="es")
 head
   meta(charset="UTF-8")
   title Sector Eductivo 05
-  link(href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css", rel="stylesheet", integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7", crossorigin="anonymous")
+  link(rel="stylesheet" href="/css/bootstrap.css")
+  link(rel="stylesheet" href="/css/animate.css")
+  link(rel="stylesheet" href="/css/main.css")
+  link(rel="stylesheet", href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css")
+  script(src="/js/main.js")
+  
 body
-  h1 Pagina de inicio
-  a(id="user" href="/users/#{user.username}") perfil
+  nav(class="navbar navbar-default topnav col-md-12 center-block no-float text-center")
+    div(class="container topnav")
+      a(class="navbar-logo " href="/") 
+        img(src="/img/logo.jpg" width="250" alt="")
+      div(class="collapse navbar-collapse")
+        ul(class="nav navbar-nav navbar-right")
+          li 
+            a(href="/") 
+              span(class="lnr lnr-home") 
+          li
+            a(href="/users/#{user.username}")
+              span(class="lnr lnr-user")
+          li
+            a(href="/logout")
+              span(class="lnr lnr-exit")
   
-  h3(id="gf") Todas las publicaciones
-  div(id="feed")
-    if(statuses[0])
-      div(id="postsOuter")
-        div(id="socket")
-        - for(var i = 0; i<statuses.length; i++) {
-          div(class="post")  
-            div(class="timestamp") 
-              abbr(class="timeago" title="#{new Date(statuses[i].time).toISOString()}")
-            a(class="colorize" href="/users/#{statuses[i].username}")
-              div(class="smallpic")
-                img(class="smallpic_img" src="#{statuses[i].image}")
-              div(class="smallname") 
-                =statuses[i].username
-            div(class="statusbody") 
-              =statuses[i].body
-            
-        - }
-    else
-      div(id="noposts") No hay posts en este momento  
+ 
   
+  div(class="container")
+    div(class="row")
+      div(class="col-md-9")
+        h3(id="gf") Publicaciones
+        div(id="feed")
+          if(statuses[0])
+            div(id="postsOuter")
+              div(id="socket")
+              - for(var i = 0; i<statuses.length; i++) {
+                div(class="row")
+                  div(class="post col-md-11 content ")
+                    ul(class="row")
+                      li(class="col-md-3 ")
+                        div(class="timestamp")
+                          abbr(title="#{new Date(statuses[i].time).toISOString()}")
+                        a(href="/users/#{statuses[i].username}")
+                        img(src="#{statuses[i].image}" class="img-responsive img-publicacion" alt="")
+                      li(class="col-md-8")
+                        div(class="text-left")
+                          a=statuses[i].username
+                        div(class="text-left")
+                          p(class="justify")=statuses[i].body
+              - }
+          else
+            div(id="noposts") No hay posts en este momento  
+      div(class="col-md-3")
+        h3 Link

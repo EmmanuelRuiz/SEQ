@@ -84,6 +84,12 @@ a:hover{
   border-radius: 10px;
 }
 
+.navbar-logo{
+  float: left;
+  height: 50px;
+  font-size: 18px;
+  line-height: 20px;
+}
 
 
 /* profile */
@@ -103,7 +109,6 @@ background-color: #fAfAfA;
     overflow: hidden;
     position: relative;
     margin: 0 auto;
-    border-radius: 50%;
 }
 
 .contenedor-foto .contenido-perfil ul {
