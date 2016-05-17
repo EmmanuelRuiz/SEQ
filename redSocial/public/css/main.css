@@ -2,149 +2,120 @@ body{
   font-family: 'Lato', sans-serif;
 }
 
-.letra-blanca{
-  color: white;
-  text-shadow: 1px 2px #000;
-  font-size: 60px;
+/* Tipografia */
+.raleway{
+  font-family: 'Raleway', sans-serif;
 }
 
-.blanca{
-  color: white;
-  text-shadow: 1px 2px #000;
-}
+/* estilos para acomodar container */
 
 .no-float{
   float: none!important;
 }
 
+.fondo-cont{
+  background-color: white;
+}
+
+/*  detalles imagenes */
+
 .float-right{
   float: right;
 }
 
-.index-background-welcome{
+.circle{
+  border-radius: 50%;
+}
+
+/* pagina de de bienvenida */
+
+.header{
+  display: table;
+  position: relative;
+  width: 100%;
+  padding: 16.7%;
   background-image: url("../img/background.jpg");
   background-repeat: no-repeat;
   background-size: cover;
-  padding-top: 12.6%;
-  padding-bottom: 12.6%;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
 }
 
-.index-background-login{
-  background-image: url("../img/background.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  padding-top: 17.9%;
-  padding-bottom: 17.9%;
+.text-vertical-center{
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
 }
 
-.index-background-signup{
-  background-image: url("../img/background.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  padding-top: 16.5%;
-  padding-bottom: 16.5%;
+.btn-margin{
+  margin-left: 15px;
+  margin-right: 10px;
+}
+
+.s{
+  font-family: 'Montserrat', sans-serif;
 }
 
 
-.container-login{
-  margin-left: 20%;
-  margin-right: 20%;
+
+.no-border{
+  border-color: transparent;
 }
 
-.header-container{
-  background-color: transparent;
+
+.white-letter{
+  color: #FFFFFF;
 }
 
-a:hover{
-  color: grey;
-  text-decoration: none;
-  cursor: pointer;
+.btn-blue{
+  border-color: transparent;
+  background-color: #2077cf;
+  border-radius: 3px;
 }
 
-.img-banner{
-  max-width: 100%;
+.btn-blue:hover{
+  background-color: #3784d3;
 }
 
-.navbar-default {
-    background-color: #fff;
+
+/* barra de navegacion bienvenida*/
+
+#tf-menu.navbar-default {
+    background-color: rgba(248, 248, 248, 0);
+    border-color: rgba(231, 231, 231, 0);
+}
+
+.margin-btn-top{
+  margin-top: 23px;
+}
+
+.btn-green{
+  background-color: #74bc60;
+  border-radius: 3px;
+}
+
+.btn-green:hover{
+    background-color: #3EAB6C;
   }
 
-.top-space{
-  margin-top: 50px;
+.margin-modal{
+  margin: 100px auto;
 }
 
-.justify{
-  text-align: justify;
+/* estilos homepage*/
+
+.bottom-space{
+  margin-bottom: 15px;
 }
 
-.content{
-  background-color: white;
-  padding: 2%;
-  border: 1px solid #ccc;
-  border-radius: 10px;
+.hr-largo{
+  width: 100%;
+  margin-top: -1px;
+  border-bottom: 4px solid #c4c9c9;
+  border-bottom-color: #6CA95C;
 }
 
-.navbar-logo{
-  float: left;
-  height: 50px;
-  font-size: 18px;
-  line-height: 20px;
-}
-
-
-/* profile */
-
-body{
-background-color: #fAfAfA;
-}
-
-.contenedor-foto{
-  padding-top: 10px;
-}
-
-.imagen-perfil{
-    height: auto;
-    width: 200px;
-    box-shadow: 0px 0px 3px 3px #e7e4dc;
-    overflow: hidden;
-    position: relative;
-    margin: 0 auto;
-}
-
-.contenedor-foto .contenido-perfil ul {
-  list-style: none;
-}
-.topnav{
-  padding-top: 5px;
-}
-nav{
-  font-size: 1.5em;
-}
-
-.txt-bio{
-  font-size: 1.3em;
-}
-
-.section-publicaciones{
-  text-align: center;
-  padding-bottom: 55px;
-  padding: 70px 0;
-  ;
-}
-
-.img-publicacion{
-  height: auto;
-  width: 100px;
-  box-shadow: 0px 0px 3px 3px #e7e4dc;
-  overflow: hidden;
-  position: relative;
-  margin: 0 auto;
-}
-
-ul, li {
-  list-style: none;
-}
-
-.post{
-  margin-top: 1em;
+.no-margin-nav{
+  margin-bottom: 0px;
 }

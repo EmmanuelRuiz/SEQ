@@ -3,11 +3,112 @@ html(lang="en")
 head
   meta(charset="UTF-8")
   title Bienvenida - Sector Educativo 05
-  link(href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css", rel="stylesheet", integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7", crossorigin="anonymous")
+  link(rel="stylesheet" href="/css/bootstrap.css")
+  link(rel="stylesheet" href="/css/animate.css")
+  link(rel="stylesheet" href="/css/main.css")
+  link(rel="stylesheet", href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css")
+  link(rel="stylesheet", href="https://fonts.googleapis.com/css?family=Lato:400,300,700")
+  link(rel="stylesheet", href='https://fonts.googleapis.com/css?family=Raleway')
+  link(rel="stylesheet", href='https://fonts.googleapis.com/css?family=Montserrat:400,700')
+  script(src="/js/main.js")
+  script(src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js")
+  script(src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js")
 body
-  h1 Bienvenida
-  a(href="/login") Iniciar sesión
-  = " | "
-  a(href="/registrar") Registrarse
+  
+  nav(id="tf-menu" class="navbar navbar-default navbar-fixed-top")
+    div(class="container") 
+      div(class="navbar-header")
+        a(class="navbar-brand" href="/") 
+          img(src="/img/logo.png", width="300" alt="")
+      div(class="collapse navbar-collapse" id="bs-example-navbar-collapse-1")
+        ul(class="nav navbar-nav navbar-right")
+          li
+            button(type="button" class="btn btn-info btn-green margin-btn-top white-letter no-border lyric-monts" data-toggle="modal" data-target="#loginModal") Entrar
+            
+
+  header(id="top" class="header")
+    div(class="text-vertical-center")
+      h1(class="lyric-monts white-letter") Servicios Educativos de Quintana Roo
+      h3(class="lyric-monts white-letter") Sector Educativo 05
+      hr
+      h3(class="lyric-monts white-letter") Crear cuenta
+      br
+      a(class="btn btn-info btn-margin lyric-monts btn-blue white-letter" role="button" data-toggle="modal" data-target="#signupProfesorModal") Soy profesor
+      =" "      
+      a(class="btn btn-info btn-margin lyric-monts btn-blue white-letter" role="button" data-toggle="modal" data-target="#signupDirectorModal") Soy director
+      =" "
+      a(class="btn btn-info btn-margin lyric-monts btn-blue white-letter" role="button" data-toggle="modal" data-target="#signupSupervisorModal") Soy supervisor
+        
+            
+  div(class="modal" id="loginModal" role="dialog")  
+    div(class="modal-dialog")  
+      div(class="modal-content")
+        div(class="modal-header")
+          h3(class="text-center") Iniciar Sesión
+        div(class="modal-body")
+          if(error2)
+            div(class="error alert alert-danger fade in")
+              = error2
+          form(action="/login" method="post")
+            div(class="form-group")
+              input(type="text" name="username" class="form-control lyric-monts" placeholder="RFC")
+            div(class="form-group")
+              input(type="password" name="password" class="form-control lyric-monts" placeholder="Contraseña")
+            div(class="form-group text-right")
+              input(type="submit" class="btn btn-success lyric-monts" value="Entrar")
+  
+  div(class="modal" id="signupProfesorModal" role="dialog")  
+    div(class="modal-dialog margin-modal")  
+      div(class="modal-content")
+        div(class="modal-header")
+          h3(class="text-center") Registrarte como Profesor
+        div(class="modal-body")
+          form(action="/signup" method="post")
+            div(class="form-group")
+              input(type="text" name="username" class="form-control" placeholder="Nombre de usuario")
+            div(class="form-group")
+              input(type="password" name="password" class="form-control" placeholder="Contraseña")
+            div(class="form-group")
+              input(type="password" name="confirm" class="form-control" placeholder="Confirmar contraseña")
+            div(class="form-group text-right")
+              button(type="submit" class="btn btn-success" ) Registrar
+              
+  div(class="modal" id="signupDirectorModal" role="dialog")  
+    div(class="modal-dialog margin-modal")  
+      div(class="modal-content")
+        div(class="modal-header")
+          h3(class="text-center") Registrarte como Director
+        div(class="modal-body")
+          form(action="/signup" method="post")
+            div(class="form-group")
+              input(type="text" name="username" class="form-control" placeholder="Nombre de usuario")
+            div(class="form-group")
+              input(type="password" name="password" class="form-control" placeholder="Contraseña")
+            div(class="form-group")
+              input(type="password" name="confirm" class="form-control" placeholder="Confirmar contraseña")
+            div(class="form-group text-right")
+              button(type="submit" class="btn btn-success" ) Registrar
+              
+  div(class="modal" id="signupSupervisorModal" role="dialog")  
+    div(class="modal-dialog margin-modal")  
+      div(class="modal-content")
+        div(class="modal-header")
+          h3(class="text-center") Registrarte como Supervisor
+        div(class="modal-body")
+          form(action="/signup" method="post")
+            div(class="form-group")
+              input(type="text" name="username" class="form-control" placeholder="Nombre de usuario")
+            div(class="form-group")
+              input(type="password" name="password" class="form-control" placeholder="Contraseña")
+            div(class="form-group")
+              input(type="password" name="confirm" class="form-control" placeholder="Confirmar contraseña")
+            div(class="form-group text-right")
+              button(type="submit" class="btn btn-success" ) Registrar
+              
+      
+      
+      
+      
+      
   
   

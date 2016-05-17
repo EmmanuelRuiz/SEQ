@@ -7,15 +7,23 @@ head
   link(rel="stylesheet" href="/css/animate.css")
   link(rel="stylesheet" href="/css/main.css")
   link(rel="stylesheet", href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css")
+  link(rel="stylesheet", href="https://fonts.googleapis.com/css?family=Lato:400,300,700")
+  link(rel="stylesheet", href='https://fonts.googleapis.com/css?family=Raleway')
   script(src="/js/main.js")
   
 body
-  
-  nav(class="navbar navbar-default topnav col-md-12 center-block no-float text-center")
-    div(class="container topnav")
-      a(class="navbar-logo " href="/") 
-        img(src="/img/logo.jpg" width="250" alt="")
-      div(class="collapse navbar-collapse")
+  - var myname = currentUser.username      
+   
+   if(user.username == currentUser.username)
+     - var isMe = true
+   else
+     - var isMe = false
+  nav(class="navbar navbar-default navbar-static-top no-margin-nav")
+    div(class="container")
+      div(class="navbar-header")
+        a(href="/")
+          img(src="/img/logo.png", width="300" alt="")
+      div(id="navbar" class="navbar-collapse collapse")
         ul(class="nav navbar-nav navbar-right")
           li 
             a(href="/") 
@@ -26,65 +34,56 @@ body
           li
             a(href="/logout")
               span(class="lnr lnr-exit")
-
-   - var myname = currentUser.username      
-    
-    if(user.username == currentUser.username)
-      - var isMe = true
-    else
-      - var isMe = false
+  hr(class="hr-largo")
+  
+  
+   
  
-  section(class="top-space")
-    div(class="container")
-      div(class="row")
-        div(Class="col-md-4")
-          div(class="imagen-perfil float-right")
-            img(src="#{user.image}" class="img-responsive " )
-        div(class="col-md-8" )
-          ul()
-            li()
-              if (isMe) 
-                h2= user.username 
-                p(class="txt-bio")= user.bio
-                button(type="button" class="btn btn-default") Editar perfil
-              else 
-                h2= user.username 
-                p(class="txt-bio")= user.bio
+  div(class="container fondo-cont")
+    div(class="row")
+      div(Class="col-md-6")
+        img(src="#{user.image}" class="circle float-right" width="200" height="200")
+      div(class="col-md-6")
+        if (isMe) 
+          h1(class="raleway")= user.username 
+          h5()= user.bio
+          a(class="btn btn-info" role="button" href="/editar") Editar perfil
+        else 
+          h2= user.username 
+          p(class="txt-bio")= user.bio
                 
+  div(class="container fondo-cont")
+    div(class="row")
+      div(class="col-md-8 center-block no-float")
+        div(id="postsOuter")
+          if(isMe)
+            form(action="/statuses" id="postNewStatus" method="post")
+              div(class="form-group text-left")
+                label Comparte tu idea...
+                textarea(name="status" id="newstatus" class="form-control")
+              div(class="form-group text-right")
+                input(type="submit" class="btn btn-default sub" value="Publicar")
+      
             
-            
-            
-  section(class="section-publicaciones")
-    div(class="container")
+  - for (var i = 0; i < statuses.length; i++) {
+    div(class="container fondo-cont")
       div(class="row")
-        div(class="col-sm-8 center-block no-float")
-          div(id="postsOuter")
-            if(isMe)
-              form(action="/statuses" id="postNewStatus" method="post")
-                div(class="form-group text-left")
-                  label Comparte tu idea...
-                  textarea(name="status" id="newstatus" class="form-control")
-                div(class="form-group text-right")
-                  input(type="submit" class="btn btn-success sub" value="Publicar")
-          
-            
-    - for (var i = 0; i < statuses.length; ++i) {
-      div(class="container")
-        div(class="row")
-          div(class="post col-md-8 center-block no-float content ")
-            ul(class="row")
-              li(class="col-md-3 ")
-                div(class="timestamp")
-                  abbr(title="#{new Date(statuses[i].time).toISOString()}")
-                a(href="/users/#{user.username}")
-                img(src="#{user.image}" class="img-responsive img-publicacion" alt="")
-
-              li(class="col-md-8")
-                div(class="text-left")
-                  a=user.username
-                div(class="text-left")
-                  p(class="justify")=statuses[i].body
-    - }
-                
+        div(class="col-md-8 center-block no-float")  
+          div(class="post panel panel-default")
+            div(class="panel-heading")
+              div(class="timestamp")
+                abbr(class="timeago" title="#{new Date(statuses[i].time).toISOString()}")
+              ul(class="list-inline")
+                li
+                  a(href="/users/#{user.username}")
+                    img(src="#{user.image}" class="circle" width="50" height="50")
+                li
+                  div()
+                    a=user.username
+            div(class="panel-body")
+              p()=statuses[i].body
+  - }   
+        
+        
               
           

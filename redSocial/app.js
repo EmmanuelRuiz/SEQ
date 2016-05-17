@@ -83,7 +83,7 @@ app.get('/login', function (req, res) {
 	if (req.query.error2) {
 		error2 = "Intenta de nuevo porfavor";
 	}
-	res.render('login', {error1: error1, error2: error2});
+	res.render('welcome', {error1: error1, error2: error2});
 });
 
 app.post('/login', function (req, res) {
@@ -106,6 +106,53 @@ app.post('/login', function (req, res) {
 app.get("/registrar",function(req, res){
   res.render("signup");
 });
+
+app.get('/editar', function (req, res){
+
+		var supervisorData = {
+			username: username,
+			password: password,
+			image: 'http://leadersinheels.com/wp-content/uploads/facebook-default.jpg',
+			bio: 'Hola, soy nuevo en este sistema',
+			hidden: false,
+			wall: []
+		};
+
+		var newSupervisor = new Supervisor(supervisorData).save(function (err){
+			req.session.supervisor = supervisorData;
+			console.log('New user '+username+' has been created!');
+			res.redirect('/editar/'+username);
+
+		});
+
+});
+
+app.get('/editar/:username', function (req, res) {
+	if (req.session.supervisor) {
+		var username = req.params.username.toLowerCase();
+		var query = {username: username};
+		var currentUser = req.session.supervisor;
+
+		Supervisor.findOne(query, function (err, user) {
+			if (err || !user) {
+        res.send('No user found by id '+username);
+			} else {
+				Status.find(query).sort({time: -1}).exec(function(err, statuses){
+					res.render('edit', {
+						user: user,
+						statuses: statuses,
+						currentUser: currentUser
+					});
+
+				});
+			}
+		});
+	} else {
+		res.redirect('/registrar');
+	}
+});
+
+
 
 app.post('/signup', function (req, res){
 
@@ -158,6 +205,7 @@ app.get('/users/:username', function (req, res) {
 						statuses: statuses,
 						currentUser: currentUser
 					});
+
 				});
 			}
 		});
@@ -209,5 +257,3 @@ app.post('/statuses', function (req, res) {
 		res.redirect('/login');
 	}
 });
-
- 
