@@ -28,8 +28,25 @@ body
           li
             a(href="/logout")
               span(class="lnr lnr-exit")
-    hr(class="hr-largo")
-            
+  hr(class="hr-largo")
+  
+  
+  div(class="container")
+    div(class="row")
+      div(class="col-md-3")
+        h1(class="raleway")= user.username
+        img(src="#{user.image}", width="200" alt="")
+        
+      div(class="col-md-9")
+        form(action="/editar" method="post")
+          input(type="text" name="image" class="form-control" value="#{user.image}")
+          div(class="form-group")
+            input(type="text" name="name" class="form-control" value="#{user.username}")
+          div(class="form-group")  
+            textarea(name="bio" class="form-control")
+              = user.bio
+          div(class="form-group")
+            input(type="submit" class="btn btn-success" value="Actualizar")           
             
       
                 

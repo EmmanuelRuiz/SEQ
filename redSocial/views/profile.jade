@@ -47,7 +47,7 @@ body
         if (isMe) 
           h1(class="raleway")= user.username 
           h5()= user.bio
-          a(class="btn btn-info" role="button" href="/editar") Editar perfil
+          a(class="btn btn-info" role="button" href="/editar/#{user.username}") Editar perfil
         else 
           h2= user.username 
           p(class="txt-bio")= user.bio

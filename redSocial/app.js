@@ -107,28 +107,9 @@ app.get("/registrar",function(req, res){
   res.render("signup");
 });
 
-app.get('/editar', function (req, res){
 
-		var supervisorData = {
-			username: username,
-			password: password,
-			image: 'http://leadersinheels.com/wp-content/uploads/facebook-default.jpg',
-			bio: 'Hola, soy nuevo en este sistema',
-			hidden: false,
-			wall: []
-		};
-
-		var newSupervisor = new Supervisor(supervisorData).save(function (err){
-			req.session.supervisor = supervisorData;
-			console.log('New user '+username+' has been created!');
-			res.redirect('/editar/'+username);
-
-		});
-
-});
-
-app.get('/editar/:username', function (req, res) {
-	if (req.session.supervisor) {
+app.get("/editar/:username", function(req, res){
+  if (req.session.supervisor) {
 		var username = req.params.username.toLowerCase();
 		var query = {username: username};
 		var currentUser = req.session.supervisor;
@@ -147,9 +128,28 @@ app.get('/editar/:username', function (req, res) {
 				});
 			}
 		});
-	} else {
-		res.redirect('/registrar');
 	}
+});
+
+app.post("/editar", function(req, res){
+  if (req.session.supervisor) {
+    var username = req.session.supervisor.username;
+    var query = {username: username};
+    var newBio = req.body.bio;
+    var newImage = req.body.image;
+    var change = {bio: newBio, image: newImage};
+
+    Supervisor.update(query, change, function (err, user) {
+      Status.update(query, {image: newImage}, {multi: true}, function(err, statuses){
+        console.log(username+' has updated their profile');
+        req.session.supervisor.bio = newBio;
+        req.session.supervisor.image = newImage;
+          res.redirect('/users/'+username);
+      });
+    });
+  } else {
+    res.redirect('/login');
+  }
 });
 
 
