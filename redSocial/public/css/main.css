@@ -53,7 +53,7 @@ body{
   margin-right: 10px;
 }
 
-.s{
+.lyric-monts{
   font-family: 'Montserrat', sans-serif;
 }
 
@@ -118,4 +118,17 @@ body{
 
 .no-margin-nav{
   margin-bottom: 0px;
+}
+
+
+/* Estilos pagina de editar*/
+
+.form-padding{
+  padding: 70px;
+  padding-right: 20px;
+}
+
+.margin-column{
+  margin-top: 50px;
+  padding: 20px;
 }

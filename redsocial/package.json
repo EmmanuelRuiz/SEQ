@@ -1,0 +1,22 @@
+{
+  "name": "redsocial",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "dependencies": {
+    "jade": "^1.11.0",
+    "socket.io": "^1.4.6",
+    "express": "4.13.3",
+    "multer": "1.1.0"
+  },
+  "devDependencies": {
+    "should": "~7.1.0",
+    "mocha": "~2.3.3",
+    "supertest": "~1.1.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

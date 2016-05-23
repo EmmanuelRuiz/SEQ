@@ -1,21 +1,17 @@
-var express = require('express');
+var express = require('express')
 var mongoose = require('mongoose');
-var multer = require('multer');
-var cloudinary = require('cloudinary');
+var bodyParser = require('body-parser');
 var http = require('http');
+var multer = require("multer");
 
-cloudinary.config({
-  cloud_name: "epikode",
-  api_key: "958628741753562",
-  api_secret: "f39ked47HMDj32r5XbanZ7o_WbQ"
-});
+
 
 // initialize our app
 var app = express();
 
-
-var db = 'seq';
+var db = 'bd';
 mongoose.connect('mongodb://localhost/'+db);
+
 
 app.set("view engine", "jade");
 app.use(express.static("public"));
@@ -139,12 +135,13 @@ app.post("/editar", function(req, res){
     var newImage = req.body.image;
     var change = {bio: newBio, image: newImage};
 
+
     Supervisor.update(query, change, function (err, user) {
       Status.update(query, {image: newImage}, {multi: true}, function(err, statuses){
         console.log(username+' has updated their profile');
         req.session.supervisor.bio = newBio;
         req.session.supervisor.image = newImage;
-          res.redirect('/users/'+username);
+        res.redirect('/users/'+username);
       });
     });
   } else {
@@ -171,7 +168,7 @@ app.post('/signup', function (req, res){
 				var supervisorData = {
 					username: username,
 					password: password,
-					image: 'http://leadersinheels.com/wp-content/uploads/facebook-default.jpg',
+					image: 'data.png',
 					bio: 'Hola, soy nuevo en este sistema',
 					hidden: false,
 					wall: []
